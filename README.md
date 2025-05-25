@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Event Calendar
 
-## Getting Started
+A modern, responsive event calendar built with Next.js, React, and Tailwind CSS. Create, manage, and organize your events with an intuitive drag-and-drop interface.
 
-First, run the development server:
+Link: https://event-calender-eight.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **📅 Monthly Calendar View** - Clean, intuitive calendar interface
+- **🎯 Event Management** - Create, edit, and delete events easily
+- **🔄 Recurring Events** - Support for daily, weekly, and monthly recurring events
+- **🎨 Color Coding** - Organize events with custom colors
+- **🖱️ Drag & Drop** - Move events between dates effortlessly
+- **🔍 Search Functionality** - Quickly find events by title or description
+- **📱 Responsive Design** - Works perfectly on desktop and mobile devices
+- **⏰ Time Management** - Set start and end times for events
+- **🔔 Event Details** - Add descriptions and view comprehensive event information
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.0 or later
+- npm package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Amandeep4567/event-calender.git
+   cd event-calendar
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
+
+## 🛠️ Built With
+
+- **[Next.js 15](https://nextjs.org/)** - React framework for production
+- **[React 19](https://reactjs.org/)** - UI library
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[date-fns](https://date-fns.org/)** - Modern JavaScript date utility library
+- **[Lucide React](https://lucide.dev/)** - Beautiful & consistent icons
+
+## 📁 Project Structure
+
+```
+event-calendar/
+├── src/
+│   ├── app/
+│   │   ├── globals.css          # Global styles
+│   │   └── page.js              # Main page component
+│   ├── components/
+│   │   ├── Calendar/            # Calendar components
+│   │   │   ├── Calendar.js
+│   │   │   ├── CalendarDay.js
+│   │   │   ├── CalendarGrid.js
+│   │   │   ├── CalendarHeader.js
+│   │   │   └── EventCard.js
+│   │   ├── Forms/               # Form components
+│   │   ├── Layout/              # Layout components
+│   │   │   └── Header.js
+│   │   ├── Models/              # Modal components
+│   │   │   ├── ConfirmModal.js
+│   │   │   └── EventModal.js
+│   │   └── UI/                  # Reusable UI components
+│   ├── context/
+│   │   └── EventContext.js      # Global state management
+│   ├── hooks/                   # Custom React hooks
+│   └── utils/                   # Utility functions
+│       ├── constants.js
+│       ├── dateUtils.js
+│       ├── dragDropUtils.js
+│       └── eventUtils.js
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 How to Use
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Creating Events
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Quick Create**: Click the "Add Event" button in the header
+2. **Date-specific**: Click on any calendar day to create an event for that date
+3. Fill in the event details:
+   - Title (required)
+   - Description (optional)
+   - Start and end times
+   - Color coding
+   - Recurrence settings
 
-## Learn More
+### Managing Events
 
-To learn more about Next.js, take a look at the following resources:
+- **View Details**: Click on any event card to see full details
+- **Edit Events**: Use the edit button in the event modal
+- **Delete Events**: Use the delete button with confirmation
+- **Move Events**: Drag and drop events to different dates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Recurring Events
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set up recurring events with options for:
+- **Daily**: Every N days
+- **Weekly**: Every N weeks, with specific day selection
+- **Monthly**: Every N months on the same date
 
-## Deploy on Vercel
+### Search and Filter
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Use the search bar in the header to quickly find events by:
+- Event title
+- Event description
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**⭐ If you found this project helpful, please give it a star on GitHub!**
