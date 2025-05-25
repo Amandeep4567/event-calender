@@ -1,4 +1,3 @@
-//Header.js
 import React, { useState } from 'react';
 import { Search, Plus, Calendar } from 'lucide-react';
 import Button from '../UI/Button';

@@ -1,4 +1,3 @@
-//constants.js
 export const RECURRENCE_TYPES = {
   NONE: 'none',
   DAILY: 'daily',

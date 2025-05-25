@@ -1,4 +1,3 @@
-//Calendar.js
 import React from 'react';
 import CalendarHeader from './CalendarHeader';
 import CalendarGrid from './CalendarGrid';

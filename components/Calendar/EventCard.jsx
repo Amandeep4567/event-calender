@@ -1,4 +1,3 @@
-//EventCard.js
 import React from 'react';
 import { Clock, Repeat } from 'lucide-react';
 import { useEventContext } from '../../context/EventContext';

@@ -1,4 +1,3 @@
-//Sidebar.js
 import React from 'react';
 import { Calendar, Clock, Repeat, Filter } from 'lucide-react';
 import { useEventContext } from '../../context/EventContext';

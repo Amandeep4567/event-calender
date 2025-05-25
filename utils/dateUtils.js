@@ -1,4 +1,3 @@
-// dateUtils.js - Fixed version to prevent date shifting
 import { 
   format, 
   startOfMonth, 
@@ -17,27 +16,9 @@ import {
   addMonths as addMonthsDateFns,
   setDate,
   getDate,
-  getDaysInMonth
+  getDaysInMonth,
+  startOfDay
 } from 'date-fns';
-
-// Helper function to create local date without timezone issues
-export const createLocalDate = (year, month, day) => {
-  return new Date(year, month, day);
-};
-
-// Helper function to format date as YYYY-MM-DD in local timezone
-export const formatLocalDate = (date) => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
-
-// Helper function to parse YYYY-MM-DD string as local date
-export const parseLocalDate = (dateString) => {
-  const [year, month, day] = dateString.split('-').map(Number);
-  return new Date(year, month - 1, day);
-};
 
 export const formatDate = (date, formatString = 'yyyy-MM-dd') => {
   return format(date, formatString);
@@ -80,19 +61,40 @@ export const isTodayUtil = (date) => {
   return isToday(date);
 };
 
-// Updated parseDate to handle local dates properly
+
 export const parseDate = (dateString) => {
-  if (typeof dateString === 'string' && dateString.match(/^\d{4}-\d{2}-\d{2}$/)) {
-    // Handle YYYY-MM-DD format as local date
-    return parseLocalDate(dateString);
+  if (typeof dateString === 'string') {
+    
+    if (dateString.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      const [year, month, day] = dateString.split('-').map(Number);
+      return new Date(year, month - 1, day); 
+    }
+    
+    return parseISO(dateString);
   }
-  return parseISO(dateString);
+  return new Date(dateString);
+};
+
+
+export const createDateString = (date) => {
+  if (!(date instanceof Date)) {
+    date = new Date(date);
+  }
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+
+export const normalizeDate = (date) => {
+  return startOfDay(parseDate(date));
 };
 
 export const generateRecurringDates = (startDate, endDate, recurrenceType, customInterval = 1, selectedDays = []) => {
   const dates = [];
-  let currentDate = new Date(startDate);
-  const end = new Date(endDate);
+  let currentDate = new Date(normalizeDate(startDate));
+  const end = new Date(normalizeDate(endDate));
   
   while (currentDate <= end) {
     dates.push(new Date(currentDate));

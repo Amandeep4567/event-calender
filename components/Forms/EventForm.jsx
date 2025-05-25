@@ -1,4 +1,3 @@
-//EventForm.js
 import React, { useState, useEffect } from 'react';
 import Button from '../UI/Button';
 import Input from '../UI/Input';

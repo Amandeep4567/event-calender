@@ -1,4 +1,3 @@
-//EventContext.js
 import React, { createContext, useContext } from 'react';
 import { useEvents } from '../hooks/useEvents';
 import { useCalendar } from '../hooks/useCalendar';

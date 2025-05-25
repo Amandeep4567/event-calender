@@ -1,4 +1,3 @@
-//RecurrenceForm.js
 import React from 'react';
 import Select from '../UI/Select';
 import Input from '../UI/Input';

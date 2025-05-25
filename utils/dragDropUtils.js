@@ -1,4 +1,3 @@
-//dragDropUtils.js
 import { DRAG_TYPES } from './constants';
 
 export const createDragData = (event) => {

@@ -1,4 +1,3 @@
-//Select.js
 import React from 'react';
 
 const Select = ({

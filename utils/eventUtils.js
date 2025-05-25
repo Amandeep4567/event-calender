@@ -1,19 +1,19 @@
-// eventUtils.js - Fixed version to prevent date shifting
-import { generateRecurringDates, isSameDayUtil, parseDate, formatLocalDate } from './dateUtils';
+import { generateRecurringDates, isSameDayUtil, parseDate, createDateString, normalizeDate } from './dateUtils';
+import { v4 as uuidv4 } from 'crypto';
 
 export const generateEventId = () => {
   return `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 };
 
 export const createEvent = (eventData) => {
-  // Ensure dates are stored as local date strings (YYYY-MM-DD)
+  
   const startDate = eventData.startDate instanceof Date 
-    ? formatLocalDate(eventData.startDate)
+    ? createDateString(eventData.startDate)
     : eventData.startDate;
     
-  const endDate = eventData.endDate instanceof Date
-    ? formatLocalDate(eventData.endDate)
-    : (eventData.endDate || startDate);
+  const endDate = eventData.endDate 
+    ? (eventData.endDate instanceof Date ? createDateString(eventData.endDate) : eventData.endDate)
+    : startDate;
 
   return {
     id: generateEventId(),
@@ -43,11 +43,11 @@ export const expandRecurringEvents = (events) => {
       expandedEvents.push(event);
     } else {
       const endDate = event.recurrence.endDate ?
-        parseDate(event.recurrence.endDate) :
+        normalizeDate(event.recurrence.endDate) :
         new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
 
       const recurringDates = generateRecurringDates(
-        parseDate(event.startDate),
+        normalizeDate(event.startDate),
         endDate,
         event.recurrence.type,
         event.recurrence.interval,
@@ -58,8 +58,8 @@ export const expandRecurringEvents = (events) => {
         expandedEvents.push({
           ...event,
           id: index === 0 ? event.id : `${event.id}_${index}`,
-          startDate: formatLocalDate(date),
-          endDate: formatLocalDate(date),
+          startDate: createDateString(date),
+          endDate: createDateString(date),
           isRecurring: true,
           originalEventId: event.id,
           recurrenceIndex: index
@@ -72,9 +72,12 @@ export const expandRecurringEvents = (events) => {
 };
 
 export const getEventsForDate = (events, date) => {
-  return events.filter(event =>
-    isSameDayUtil(parseDate(event.startDate), date)
-  );
+  
+  const targetDate = normalizeDate(date);
+  return events.filter(event => {
+    const eventDate = normalizeDate(event.startDate);
+    return isSameDayUtil(eventDate, targetDate);
+  });
 };
 
 export const checkEventConflict = (newEvent, existingEvents) => {
@@ -94,8 +97,8 @@ export const checkEventConflict = (newEvent, existingEvents) => {
 export const updateEventDate = (event, newDate) => {
   return {
     ...event,
-    startDate: formatLocalDate(newDate),
-    endDate: formatLocalDate(newDate),
+    startDate: createDateString(newDate),
+    endDate: createDateString(newDate),
     updatedAt: new Date().toISOString()
   };
 };

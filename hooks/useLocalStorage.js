@@ -1,4 +1,3 @@
-//useLocalStorage.js
 import { useState, useEffect } from 'react';
 import { LOCAL_STORAGE_KEY } from '../utils/constants';
 

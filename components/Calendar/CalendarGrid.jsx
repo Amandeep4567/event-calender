@@ -1,4 +1,3 @@
-//CalendarGrid.js
 import React from 'react';
 import CalendarDay from './CalendarDay';
 import { useEventContext } from '../../context/EventContext';

@@ -1,4 +1,3 @@
-//useEvents.js
 import { useState, useCallback, useMemo } from 'react';
 import { createEvent, expandRecurringEvents, checkEventConflict, updateEventDate, filterEventsBySearch } from '../utils/eventUtils';
 import { useLocalStorage } from './useLocalStorage';

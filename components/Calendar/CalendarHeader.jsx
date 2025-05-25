@@ -1,4 +1,3 @@
-//CalendarHeader.js
 import React from 'react';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
 import Button from '../UI/Button';

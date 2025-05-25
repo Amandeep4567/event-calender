@@ -1,4 +1,3 @@
-//CalendarDay.js
 import React, { useState } from 'react';
 import EventCard from './EventCard';
 import EventModal from '../Models/EventModel';

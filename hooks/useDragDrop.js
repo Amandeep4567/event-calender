@@ -1,4 +1,3 @@
-//useDragDrop.js
 import { useState, useCallback } from 'react';
 import { createDragData, parseDragData, setDragData, isDragDataValid } from '../utils/dragDropUtils';
 

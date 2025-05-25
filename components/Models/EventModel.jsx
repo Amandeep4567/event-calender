@@ -1,4 +1,3 @@
-//EventModal.js
 import React, { useState } from 'react';
 import { X, Edit3, Trash2, Clock, Calendar, Repeat } from 'lucide-react';
 import Button from '../UI/Button';

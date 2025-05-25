@@ -1,4 +1,3 @@
-//useCalendar.js
 import { useState, useMemo } from 'react';
 import { getMonthDays, nextMonth, prevMonth } from '../utils/dateUtils';
 
